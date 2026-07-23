@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Daily Work Report</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Daily Work <span>Register</span></h1>
+    <div class="date-badge" id="todayBadge"></div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="today">Today's Report</button>
+    <button class="tab-btn" data-tab="staff">Manage Staff</button>
+    <button class="tab-btn" data-tab="history">View Past Date</button>
+    <button class="tab-btn" data-tab="summary">Monthly Summary</button>
+  </div>
+
+  <!-- TODAY -->
+  <div class="panel active" id="panel-today">
+    <h2>Report for <span id="todayLabel"></span> <span class="save-note" id="todaySaveNote">Saved ✓</span></h2>
+    <div id="todayTableWrap"></div>
+  </div>
+
+  <!-- STAFF MANAGEMENT -->
+  <div class="panel" id="panel-staff">
+    <h2>Staff List</h2>
+    <p class="muted">Add each staff member's name once. You can edit or remove names any time — existing daily records for that name stay attached until you rename them here.</p>
+    <div id="staffListWrap"></div>
+    <div class="row">
+      <input type="text" id="newStaffInput" placeholder="New staff name">
+      <button class="btn-primary" onclick="addStaff()">+ Add Staff</button>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="panel" id="panel-history">
+    <h2>View / Edit a Past Date</h2>
+    <div class="row">
+      <input type="date" id="historyDatePicker">
+      <button class="btn-secondary" onclick="loadHistoryDate()">Load</button>
+    </div>
+    <div id="historyTableWrap"></div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="panel" id="panel-summary">
+    <h2>Monthly Attendance Summary</h2>
+    <div class="row">
+      <input type="month" id="summaryMonthPicker">
+      <button class="btn-secondary" onclick="renderSummary()">Show Summary</button>
+    </div>
+    <div id="summaryTableWrap"></div>
+  </div>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
